@@ -15,7 +15,7 @@ def remove_element(list_,index_):
 
 def scanElementToList():
     command = 'sudo arp-scan -I enp0s25 -l | grep WIBRAIN'
-    command = 'sudo arp-scan -I wlp1s0 -l | grep Unknown'
+    #command = 'sudo arp-scan -I wlp1s0 -l | grep Unknown'
     output = subprocess.run(command, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
     rows = output.stdout.split("\n")
     counter = 0
@@ -60,6 +60,17 @@ def user_print():
         print(str(nr) + " \t" + i[0] + "\t\t" + i[1] )
         nr += 1
     print("\n\n")
+
+
+def write_readme():
+    '''Writes the names and ip to REDME.md '''
+    fp = open("README.md" , "w")
+    fp.write("#Odroid\nHere are the Odroid ip and owners\n")
+    for u in Odroid_usres:
+        for o in Odroid_mac_scan:
+            if(u[1] == o[1]):
+                fp.write(" * " + u[0] + "\t" + "\t" + o[0] + "\n")
+    fp.close()
 
 def user_add(Name):
     '''Adds a user to Odroid_usres stack'''
@@ -129,6 +140,27 @@ def user_atatch():
         else:
             print("-- Exit user achatch --")
             return -1
+def file_operations():
+    print("1 save users.dat")
+    print("2 read users.dat")
+    print("3 save README.md")
+    print("4 Clear README.md")
+    print("5 EXIT")
+    ch = int(input("Select operation"))
+    if (ch == 1):
+        write_user_to_file()
+    elif (ch == 2):
+        read_usr_from_file()
+    elif (ch == 3):
+        write_readme()
+    elif (ch == 4):
+        print("Clears the READMD.me file")
+        fp = open("README.md", "w")
+        fp.write("#Odrid\nNo project is going on now")
+        fp.close()
+    else:
+        print("exti")
+        return 0
 
 def menu():
     running = True
@@ -139,6 +171,7 @@ def menu():
         print("4 Config user")
         print("5 Atach Odroid ot user")
         print("6 Show IP config for all OdroidS")
+        print("9 FileOperations")
         print("0 EXIT")
         choise = int(input("Enter option $$ "))
         if choise == 1:
@@ -154,8 +187,11 @@ def menu():
             user_atatch()
         elif choise == 6:
             print_conections()
+        elif choise == 9:
+            file_operations()
         elif choise == 0:
             running = False
+            write_readme()
         else:
             print("No choise enterd")
 

@@ -1,2 +1,2 @@
-# Odoid
-Here are the ip for the Odroids on our lan.
+#Odroid
+Here are the Odroid ip and owners

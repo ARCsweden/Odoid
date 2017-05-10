@@ -1,5 +1,6 @@
 #Odroid
 Here are the Odroid ip and owners
+ * Hampus		10.132.136.7
  * Magnus		10.132.136.57
  * Göran		10.132.136.61
  * Pelle		10.132.137.50

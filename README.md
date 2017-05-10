@@ -6,4 +6,4 @@ Here are the Odroid ip and owners
  * Daniel_s		10.132.136.11
  * Elisabeth		10.132.136.44
  * Nils		10.132.136.61
- * Martin_N		10.132.137.50
+ * Martin_N		10.132.137.86
